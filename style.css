@@ -1,0 +1,131 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffd166; /* Yellow/orange background color */
+}
+
+.container {
+    text-align: center;
+}
+
+/* -------------- INDEX -------------- */
+.tutorial-link {
+    position: absolute;
+    bottom: 10px; /* Adjust bottom margin */
+    left: 10px; /* Adjust left margin */
+    color: #000; /* Text color */
+    text-decoration: none; /* Remove underline */
+}
+
+.welcome-banner {
+	margin-top: 50px;
+}
+
+.play-button-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Make sure it's positioned relative for absolute positioning of tutorial link */
+    margin-top: 250px; /* Adjust margin as needed */
+}
+
+/* -------------- MAIN MENU -------------- */
+.container.main-menu {
+    margin-top: 20vh; /* Adjusted margin-top for vertical centering */
+}
+
+.big-title {
+    margin-bottom: 20px; /* Add some space below the title */
+}
+
+.modes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-mode, .right-mode {
+    width: 50%;
+    text-align: center;
+}
+
+.left-mode {
+    margin-right: auto; /* Push Levels to the left */
+}
+
+.right-mode {
+    margin-left: auto; /* Push Custom Puzzle to the right */
+}
+
+.mode button {
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.mode button:hover {
+    opacity: 0.8; /* Dim the button slightly on hover */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+/* -------------- LEVELS -------------- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+    grid-auto-rows: minmax(100px, auto); /* Auto adjust row height */
+    grid-gap: 10px; /* Gap between grid items */
+}
+
+.box, .merged-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* White background */
+    border: 1px solid #000; /* Black border */
+    cursor: pointer;
+}
+
+.box:hover, .merged-box:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+.merged-box {
+    grid-column: span 2; /* Merged box spans 2 columns */
+}
+
+/* -------------- CUSTOM -------------- */
+.container.custom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.difficulty-select {
+    margin-bottom: 20px;
+}
+
+input[type="file"], select, button {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+	
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

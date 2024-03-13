@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Puzzle</title>
+    <link rel="stylesheet" href="puzzle.css">
+    <script src="puzzle.js"></script>
+    <style>
+        /* CSS for the left side navigation menu */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        /* Style the navigation links */
+        .sidenav a {
+            padding: 10px 8px 10px 16px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+        }
+
+        /* Change color on hover */
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left side navigation menu -->
+    <div class="sidenav">
+        <!-- Upload Image button and Submit button -->
+        <form id="uploadForm" action="#" method="post">
+            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImage()">
+            <a href="#" onclick="document.getElementById('imageInput').click();">Choose Image</a>
+            <input type="submit" value="Load Image" style="display: none;">
+        </form>
+        <!-- Additional navigation links can be added here -->
+    </div>
+
+    <!-- Content area -->
+    <div style="margin-left: 250px; padding: 20px;">
+        <h1>Custom Puzzle</h1>
+        <br>
+        <!-- Puzzle board and pieces will be displayed here -->
+        <div id="board"></div>
+        <div class="pieces-container" id="pieces"></div>
+        <h2>Turns: <span id="turns">0</span></h2>
+        <button onclick="checkPuzzle()">Check Puzzle</button>
+    </div>
+</body>
+</html>
