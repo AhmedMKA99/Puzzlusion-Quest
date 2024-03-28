@@ -6,23 +6,54 @@
     <title>Levels</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1 class="big-title"> Pick One - Choose Your Level</h1>
-        <div class="grid">
-            <div class="box" onclick="startLevel(1)">1</div>
-            <div class="box" onclick="startLevel(2)">2</div>
-            <div class="box" onclick="startLevel(3)">3</div>
-            <div class="box" onclick="startLevel(4)">4</div>
-            <div class="box" onclick="startLevel(5)">5</div>
-            <div class="box" onclick="startLevel(6)">6</div>
-            <div class="box" onclick="startLevel(7)">7</div>
-            <div class="box" onclick="startLevel(8)">8</div>
-            <div class="box" onclick="startLevel(9)">9</div>
-            <div class="box" onclick="startLevel(10)">10</div>
-            <div class="merged-box" colspan="2">More Coming Soon</div>
-        </div>
+<body onload="showLevelPopup()">
+    <!-- Level selection pop-up -->
+    <div id="levelPopup">
+        <h3>Choose a Level</h3>
+        <form id="levelForm">
+            <label><input type="radio" name="level" value="2"> Level 1</label>
+            <label><input type="radio" name="level" value="3"> Level 2</label>
+            <label><input type="radio" name="level" value="4"> Level 3</label>
+            <label><input type="radio" name="level" value="5"> Level 4</label>
+            <label><input type="radio" name="level" value="6"> Level 5</label>
+            <label><input type="radio" name="level" value="7"> Level 6</label>
+            <label><input type="radio" name="level" value="8"> Level 7</label>
+            <label><input type="radio" name="level" value="9"> Level 8</label>
+            <label><input type="radio" name="level" value="10"> Level 9</label>
+            <label><input type="radio" name="level" value="11"> Level 10</label>
+            <!-- Add more levels as needed -->
+            <button type="button" onclick="selectLevel()">Select</button>
+        </form>
     </div>
+
+
+	<!-- Image selection pop-up -->
+	<div id="imageSelectionPopup" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="hideImageSelectionPopup()">&times;</span>
+			<h3>Choose an Image</h3>
+			<form id="imageSelectionForm">
+				<label><input type="radio" name="selectedImage" value="img/img1.jpg"><img src="img/img1.jpg" alt="Image 1" class="image-option"></label>
+				<label><input type="radio" name="selectedImage" value="img/img2.jpg"><img src="img/img2.jpg" alt="Image 2" class="image-option"></label>
+				<label><input type="radio" name="selectedImage" value="img/img3.jpg"><img src="img/img3.jpg" alt="Image 3" class="image-option"></label>
+				<label><input type="radio" name="selectedImage" value="img/img4.jpg"><img src="img/img4.jpg" alt="Image 4" class="image-option"></label>
+				<button type="button" onclick="selectImage()">Select</button>
+			</form>
+		</div>
+	</div>
+
+
+
+
+    <div>
+        <h1>Custom Puzzle</h1>
+        <br>
+        <div id="board"></div>
+        <div class="pieces-container" id="pieces"></div>
+        <h2>Turns: <span id="turns">0</span></h2>
+        <button onclick="checkPuzzle()">Check Puzzle</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
