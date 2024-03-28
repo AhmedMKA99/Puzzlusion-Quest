@@ -18,10 +18,7 @@ body {
     cursor: pointer; /* Change cursor to pointer */
 }
 
-#clickableImage:hover {
-    /* Define styles when hovering over the image */
-    /* You can change the cursor style here if needed */
-}
+
 
 /* Style for the clickable image */
 #clickableImage {
@@ -35,7 +32,7 @@ body {
 
 /* -------------- MAIN MENU -------------- */
 .main-menu {
-    background-image: url("img/BACK2.jpg"); /* Set background image */
+    background-image: url("img/main-menue-background.jpg"); /* Set background image */
     background-size: cover; /* Cover the entire background */
 }
 
