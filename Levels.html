@@ -6,7 +6,7 @@
     <title>Levels</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="showLevelPopup()">
+<body onload="showLevelPopup()" class="Levels">
     <!-- Level selection pop-up -->
     <div id="levelPopup">
         <h3>Choose a Level</h3>
@@ -46,11 +46,11 @@
 
 
     <div>
-        <h1>Custom Puzzle</h1>
+        <h class="counter">Custom Puzzle</h1>
         <br>
         <div id="board"></div>
         <div class="pieces-container" id="pieces"></div>
-        <h2>Turns: <span id="turns">0</span></h2>
+        <h2 class="counter">Turns: <span id="turns">0</span></h2>
         <button onclick="checkPuzzle()">Check Puzzle</button>
     </div>
 

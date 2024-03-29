@@ -6,7 +6,7 @@
     <title>Custom Puzzle</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="Custom">
     <div class="sidenav">
         <form id="sizeForm" onsubmit="return false;">
             <label for="sizeDropdown">Choose Size:</label>
@@ -33,11 +33,11 @@
     </div>
 
     <div style="margin-left: 250px; padding: 20px;">
-        <h1>Custom Puzzle</h1>
+        <h1 class="counter">Custom Puzzle</h1>
         <br>
         <div id="board"></div>
         <div class="pieces-container" id="pieces"></div>
-        <h2>Turns: <span id="turns">0</span></h2>
+        <h2 class="counter">Turns: <span id="turns">0</span></h2>
         <button onclick="checkPuzzle()">Check Puzzle</button>
     </div>
 

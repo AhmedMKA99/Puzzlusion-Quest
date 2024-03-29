@@ -33,7 +33,7 @@ function initializeBoard() {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
             const tile = document.createElement("img");
-            tile.src = "./blank.jpg";
+            tile.src = "./img/gray.png";
             tile.draggable = true; // Enable dragging
             tile.addEventListener("dragstart", dragStart);
             tile.addEventListener("dragover", dragOver);
@@ -43,7 +43,6 @@ function initializeBoard() {
         }
     }
 }
-
 
 // Function to handle image selection and initialize puzzle pieces
 function handleImage() {
@@ -89,9 +88,6 @@ function createPieces(imageSrc) {
         }
     }
 }
-
-
-
 
 // Function to check if the puzzle is completed
 function isPuzzleCompleted() {
@@ -228,21 +224,9 @@ function selectImage() {
     }
 }
 
-
 // Function to hide the image selection popup
 function hideImageSelectionPopup() {
     document.getElementById('imageSelectionPopup').style.display = 'none';
-}
-
-
-
-/* -------------- PLAY_LEVELS -------------- */
-
-// Global variable to store the selected level
-let selectedLevelValue;
-
-function hideLevelPopup() {
-    document.getElementById('levelPopup').style.display = 'none';
 }
 
 // Function to show the level selection popup when the page loads
@@ -250,20 +234,10 @@ function showLevelPopup() {
     document.getElementById('levelPopup').style.display = 'block';
 }
 
-// Function to handle level selection
-function selectLevel() {
-    const selectedLevel = document.querySelector('input[name="level"]:checked');
-    if (selectedLevel) {
-        const levelValue = parseInt(selectedLevel.value);
-        // Set puzzle size based on the selected level
-        changePuzzleSizeInJavaScriptFile(levelValue);
-        // Hide the level selection popup
-        hideLevelPopup();
-    } else {
-        alert('Please select a level.');
-    }
+// Function to hide the level  selection popup
+function hideLevelPopup() {
+    document.getElementById('levelPopup').style.display = 'none';
 }
-
 
 // Function to handle level selection
 function selectLevel() {
@@ -280,6 +254,3 @@ function selectLevel() {
         alert('Please select a level.');
     }
 }
-
-// Add event listener to the submit button in the level selection pop-up
-document.getElementById('submitLevel').addEventListener('click', handleSubmit);

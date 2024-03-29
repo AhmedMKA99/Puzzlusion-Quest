@@ -134,7 +134,7 @@ body {
 }
 
 /* Style the navigation links */
-.sidenav a {
+.sidenav a, #sizeForm {
     padding: 10px 8px 10px 16px;
     text-decoration: none;
     font-size: 18px;
@@ -145,6 +145,15 @@ body {
 /* Change color on hover */
 .sidenav a:hover {
     color: #f1f1f1;
+}
+
+.Custom, .Levels {
+    background-image: url("img/Levels-Custom-background.jpg"); /* Set background image */
+    background-size: cover; /* Cover the entire background */
+}
+
+.counter, #turns{
+    color: #818181;
 }
 
 /* -------------- LEVELS -------------- */
@@ -173,12 +182,7 @@ body {
 }
 
 
-/* -------------- CHOSE_IMGAGE -------------- */
-
-
-
-
-/* -------------- PLAY_LEVELS -------------- */
+/* -------------- LEVELS -------------- */
 /* Style for the level selection grid */
 #levelPopup {
     display: none;
