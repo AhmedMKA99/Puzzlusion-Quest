@@ -254,3 +254,22 @@ function selectLevel() {
         alert('Please select a level.');
     }
 }
+
+function toggleSidebar() {
+    var sidebar = document.querySelector(".sidenav");
+    var content = document.querySelector(".content");
+    var sizeForm = document.getElementById("levelForm"); // Assuming levelForm corresponds to sizeForm
+    var uploadForm = document.getElementById("imageSelectionForm"); // Assuming imageSelectionForm corresponds to uploadForm
+
+    sidebar.classList.toggle("minimized");
+    content.classList.toggle("sidebar-closed");
+
+    // Toggle visibility of sizeForm and uploadForm
+    if (sidebar.classList.contains("minimized")) {
+        sizeForm.style.display = "none";
+        uploadForm.style.display = "none";
+    } else {
+        sizeForm.style.display = "block";
+        uploadForm.style.display = "block";
+    }
+}

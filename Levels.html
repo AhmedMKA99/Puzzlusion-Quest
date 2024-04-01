@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="showLevelPopup()" class="Levels">
+    <div class="sidenav">
+        <button id="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button> <!-- Added toggle button -->
+        <a id="main-menu-link" href="main_menu.html">Return to Main</a> <!-- Added link to return to main menu -->
+    </div>
+
     <!-- Level selection pop-up -->
     <div id="levelPopup">
         <h3>Choose a Level</h3>
@@ -26,27 +31,23 @@
         </form>
     </div>
 
-
-	<!-- Image selection pop-up -->
-	<div id="imageSelectionPopup" class="modal">
-		<div class="modal-content">
-			<span class="close" onclick="hideImageSelectionPopup()">&times;</span>
-			<h3>Choose an Image</h3>
-			<form id="imageSelectionForm">
-				<label><input type="radio" name="selectedImage" value="img/img1.jpg"><img src="img/img1.jpg" alt="Image 1" class="image-option"></label>
-				<label><input type="radio" name="selectedImage" value="img/img2.jpg"><img src="img/img2.jpg" alt="Image 2" class="image-option"></label>
-				<label><input type="radio" name="selectedImage" value="img/img3.jpg"><img src="img/img3.jpg" alt="Image 3" class="image-option"></label>
-				<label><input type="radio" name="selectedImage" value="img/img4.jpg"><img src="img/img4.jpg" alt="Image 4" class="image-option"></label>
-				<button type="button" onclick="selectImage()">Select</button>
-			</form>
-		</div>
-	</div>
-
-
-
+    <!-- Image selection pop-up -->
+    <div id="imageSelectionPopup" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideImageSelectionPopup()">&times;</span>
+            <h3>Choose an Image</h3>
+            <form id="imageSelectionForm">
+                <label><input type="radio" name="selectedImage" value="img/img1.jpg"><img src="img/img1.jpg" alt="Image 1" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img2.jpg"><img src="img/img2.jpg" alt="Image 2" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img3.jpg"><img src="img/img3.jpg" alt="Image 3" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img4.jpg"><img src="img/img4.jpg" alt="Image 4" class="image-option"></label>
+                <button type="button" onclick="selectImage()">Select</button>
+            </form>
+        </div>
+    </div>
 
     <div>
-        <h class="counter">Custom Puzzle</h1>
+        <h1 class="counter">Level</h1>
         <br>
         <div id="board"></div>
         <div class="pieces-container" id="pieces"></div>

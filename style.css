@@ -120,10 +120,12 @@ body {
     margin-top: 20px;
 }
 
+/*----------------------------------------------------*/
+
 /* CSS for the left side navigation menu */
 .sidenav {
     height: 100%;
-    width: 250px;
+    width: 200px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -131,8 +133,56 @@ body {
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+    transition: width 0.5s; /* Add transition for smooth animation */
 }
 
+.minimized {
+    width: 90px; /* Change width when minimized */
+}
+
+/* Style the toggle button */
+#toggleButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Style the size dropdown */
+#sizeForm, #main-menu-link {
+    margin-top: 20px; /* Adjust margin to prevent overlap with the toggle button */
+    padding-left: 10px; /* Add padding to align with toggle button */
+}
+
+/* Style the select dropdown */
+#sizeDropdown {
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+}
+
+/* CSS for the content */
+.content {
+    margin-left: 250px; /* Adjust margin based on the width of the sidebar */
+    padding: 20px;
+    transition: margin-left 0.5s; /* Add transition for smooth animation */
+}
+
+.sidebar-closed .content {
+    margin-left: 50px; /* Adjust margin when sidebar is closed */
+}
+
+/* Hide elements when sidebar is minimized */
+.minimized #main-menu-link,
+.minimized #sizeForm,
+.minimized #uploadForm {
+    display: none;
+}
+
+/*----------------------------------------------------*/
 /* Style the navigation links */
 .sidenav a, #sizeForm {
     padding: 10px 8px 10px 16px;

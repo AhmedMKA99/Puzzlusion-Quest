@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="Custom">
-    <div class="sidenav">
+    <div class="sidenav" id="sidenav">
+        <button id="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button> <!-- Added toggle button -->
         <form id="sizeForm" onsubmit="return false;">
             <label for="sizeDropdown">Choose Size:</label>
             <select id="sizeDropdown" onchange="changePuzzleSize()">
@@ -32,7 +33,7 @@
         </form>
     </div>
 
-    <div style="margin-left: 250px; padding: 20px;">
+    <div class="content" id="content">
         <h1 class="counter">Custom Puzzle</h1>
         <br>
         <div id="board"></div>
