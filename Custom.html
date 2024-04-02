@@ -9,6 +9,7 @@
 <body class="Custom">
     <div class="sidenav" id="sidenav">
         <button id="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button> <!-- Added toggle button -->
+        <a id="main-menu-link" href="main_menu.html">Return to Main</a>
         <form id="sizeForm" onsubmit="return false;">
             <label for="sizeDropdown">Choose Size:</label>
             <select id="sizeDropdown" onchange="changePuzzleSize()">
@@ -31,15 +32,35 @@
             <a href="#" onclick="document.getElementById('imageInput').click();">Choose Image</a>
             <input type="submit" value="Load Image" style="display: none;">
         </form>
+        <button id="previewButton" onclick="previewCompletedPuzzleCustom()">Preview Completed Puzzle</button>
+    </div>
+
+    <!-- Preview popup -->
+    <div id="previewPopup" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePreviewPopup()">&times;</span>
+            <img id="previewImage" src="" alt="Preview Completed Puzzle">
+        </div>
     </div>
 
     <div class="content" id="content">
         <h1 class="counter">Custom Puzzle</h1>
         <br>
         <div id="board"></div>
-        <div class="pieces-container" id="pieces"></div>
         <h2 class="counter">Turns: <span id="turns">0</span></h2>
+        <div class="pieces-container" id="pieces"></div>
         <button onclick="checkPuzzle()">Check Puzzle</button>
+    </div>
+
+    <!-- Congratulations popup -->
+    <div id="congratulationsPopup" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideCongratulationsPopup()">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>The puzzle is solved correctly.</p>
+            <button onclick="playAgain()">Play Again</button>
+            <button onclick="returnToMenu()">Return to Menu</button>
+        </div>
     </div>
 
     <script src="script.js"></script>

@@ -136,6 +136,11 @@ body {
     transition: width 0.5s; /* Add transition for smooth animation */
 }
 
+/* CSS for the navigation bar */
+.sidenav button, #uploadForm {
+    margin-bottom: 25px; /* Add margin below each button */
+}
+
 .minimized {
     width: 90px; /* Change width when minimized */
 }
@@ -153,6 +158,16 @@ body {
     outline: none;
 }
 
+/* Add new class for the Preview Completed Puzzle button */
+#previewButton {
+    display: block;
+}
+
+/* Hide the button when the sidebar is minimized */
+.minimized #previewButton {
+    display: none;
+}
+
 /* Style the size dropdown */
 #sizeForm, #main-menu-link {
     margin-top: 20px; /* Adjust margin to prevent overlap with the toggle button */
@@ -162,6 +177,21 @@ body {
 /* Style the select dropdown */
 #sizeDropdown {
     width: calc(100% - 20px); /* Adjust width to account for padding */
+}
+
+#levelForm label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff; /* Change text color */
+}
+
+#levelForm button {
+    margin-top: 10px;
+}
+
+/* Hide level selection form when sidebar is minimized */
+.minimized #levelForm {
+    display: none;
 }
 
 /* CSS for the content */
@@ -178,13 +208,14 @@ body {
 /* Hide elements when sidebar is minimized */
 .minimized #main-menu-link,
 .minimized #sizeForm,
-.minimized #uploadForm {
+.minimized #uploadForm,
+.minimized #Level-text {
     display: none;
 }
 
 /*----------------------------------------------------*/
 /* Style the navigation links */
-.sidenav a, #sizeForm {
+.sidenav a, #sizeForm, #Level-text {
     padding: 10px 8px 10px 16px;
     text-decoration: none;
     font-size: 18px;
@@ -304,3 +335,71 @@ body {
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px; /* Optional: Add some spacing between images */
 }
+
+
+
+/* Style for the congratulations popup */
+#congratulationsPopup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+}
+
+#congratulationsPopup .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Center the popup */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Adjust width as needed */
+    text-align: center;
+}
+
+/* Close button */
+#congratulationsPopup .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#congratulationsPopup .close:hover,
+#congratulationsPopup .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS for the preview popup */
+.modal-content {
+    background-color: #000000af;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px; /* Limit max width for smaller screens */
+    position: relative; /* Relative position for close button */
+    text-align: center; /* Center align content */
+}
+
+.modal-content img {
+    max-width: 100%; /* Limit image width to container width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: red;
+}
+
