@@ -352,14 +352,22 @@ body {
 }
 
 #congratulationsPopup .modal-content {
-    background-color: #fefefe;
+    background-color: #000000af;
+    color: #0ca6ff;
     margin: 15% auto; /* Center the popup */
     padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Adjust width as needed */
     text-align: center;
 }
-
+#congratulationsPopup button {
+    background-color: rgb(11, 105, 77); /* Change button color to red */
+    color: #e4b20d; /* Change text color to white */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
 /* Close button */
 #congratulationsPopup .close {
     color: #aaa;
@@ -377,12 +385,12 @@ body {
 
 /* CSS for the preview popup */
 .modal-content {
-    background-color: #000000af;
+    background-color: rgba(0, 0, 0, 0.686);
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 400px; /* Limit max width for smaller screens */
+    max-width: 600px; /* Limit max width for smaller screens */
     position: relative; /* Relative position for close button */
     text-align: center; /* Center align content */
 }

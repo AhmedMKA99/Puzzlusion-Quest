@@ -6,7 +6,7 @@
     <title>Levels</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="showLevelPopup()" class="Levels">
+<body  class="Levels">
     <div class="sidenav">
         <button id="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button>
         <a id="main-menu-link" href="main_menu.html">Return to Main</a>   
@@ -46,13 +46,21 @@
                 <label><input type="radio" name="selectedImage" value="img/img2.jpg"><img src="img/img2.jpg" alt="Image 2" class="image-option"></label>
                 <label><input type="radio" name="selectedImage" value="img/img3.jpg"><img src="img/img3.jpg" alt="Image 3" class="image-option"></label>
                 <label><input type="radio" name="selectedImage" value="img/img4.jpg"><img src="img/img4.jpg" alt="Image 4" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img5.jpg"><img src="img/img5.jpg" alt="Image 5" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img6.jpg"><img src="img/img6.jpg" alt="Image 6" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img7.jpg"><img src="img/img7.jpg" alt="Image 7" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img8.jpg"><img src="img/img8.jpg" alt="Image 8" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img9.jpg"><img src="img/img9.jpg" alt="Image 9" class="image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img10.jpg"><img src="img/img10.jpg" alt="Image 10" class="image-option"></label>
                 <button type="button" onclick="selectImage()">Select</button>
             </form>
         </div>
     </div>
 
+
     <div>
-        <h1 class="counter">Level</h1>
+    <h1 id="levelTitle" class="counter">Level</h1>
+
         <br>
         <div id="board"></div>
         <h2 class="counter">Turns: <span id="turns">0</span></h2>
@@ -63,10 +71,10 @@
     <div id="congratulationsPopup" class="modal">
         <div class="modal-content">
             <span class="close" onclick="hideCongratulationsPopup()">&times;</span>
-            <h2>Congratulations!</h2>
-            <p>The puzzle is solved correctly.</p>
-            <button onclick="attemptNextLevel()">Attempt Next Level</button>
-            <button onclick="returnToMenu()">Return to Menu</button>
+            <h2>👏Congratulations!👏</h2>
+            <p>🎉🎈The puzzle is solved correctly.🎈🎉</p>
+            <button onclick="attemptNextLevel()">Attempt Next Level ➜</button>
+            <button onclick="returnToMenu()">Return to Menu ⾕</button>
         </div>
     </div>
 

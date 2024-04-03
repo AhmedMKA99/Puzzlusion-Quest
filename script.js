@@ -77,34 +77,51 @@ function handleImage() {
 // Function to create puzzle pieces from user-selected image
 function createPieces(imageSrc) {
     const piecesContainer = document.getElementById("pieces");
-    piecesContainer.innerHTML = ""; // Clear previous puzzle pieces
-    originalSources = []; // Clear the originalSources array
-
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
     const image = new Image();
     image.src = imageSrc;
     image.onload = function() {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
         const pieceWidth = image.width / columns;
         const pieceHeight = image.height / rows;
-        canvas.width = pieceWidth;
-        canvas.height = pieceHeight;
+        const pieces = []; // Array to store puzzle pieces
+
+        // Create puzzle pieces
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < columns; c++) {
-                context.clearRect(0, 0, pieceWidth, pieceHeight); // Clear the canvas
+                canvas.width = pieceWidth;
+                canvas.height = pieceHeight;
                 context.drawImage(image, c * pieceWidth, r * pieceHeight, pieceWidth, pieceHeight, 0, 0, pieceWidth, pieceHeight);
                 const tile = document.createElement("img");
-                tile.src = canvas.toDataURL(); // Convert canvas to data URL
-                originalSources.push(tile.src); // Store original puzzle piece source
+                const src = canvas.toDataURL(); // Convert canvas to data URL
+                tile.src = src;
+                originalSources.push(src); // Store original puzzle piece source
                 tile.draggable = true; // Enable dragging
                 tile.addEventListener("dragstart", dragStart);
                 tile.addEventListener("dragover", dragOver);
                 tile.addEventListener("drop", dragDrop);
-                piecesContainer.appendChild(tile);
+                pieces.push(tile); // Add piece to array
             }
         }
+
+        // Shuffle the pieces
+        shuffleArray(pieces);
+
+        // Append shuffled pieces to the container
+        pieces.forEach(piece => {
+            piecesContainer.appendChild(piece);
+        });
     }
 }
+
+// Function to shuffle array (Fisher-Yates shuffle algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 
 // Function to enable the "Check Puzzle" button
 function enableCheckButton() {
@@ -224,88 +241,99 @@ function dragDrop(e) {
 }
 
 function changePuzzleSize() {
-    var selectedSize = document.getElementById("sizeDropdown").value;
-    console.log("Selected size:", selectedSize); // Log selected size
-    var size = parseInt(selectedSize);
+    var selectedSize = parseInt(document.getElementById("sizeDropdown").value);
+    console.log("Selected size:", selectedSize);
 
-    // Call the function to change the puzzle size
-    changePuzzleSizeInJavaScriptFile(size);
+    changePuzzleSizeInJavaScriptFile(selectedSize);
+    changePuzzlePiecesSizeInJavaScriptFile(selectedSize);
 }
 
 function changePuzzleSizeInJavaScriptFile(newSize) {
-    console.log("New size:", newSize); // Log new size
+    console.log("New size:", newSize);
 
-    // Define the dimensions based on the selected size
-    let width, height;
-    switch (newSize) {
-        case 2:
-            width = height = 160;
-            break;
-        case 3:
-            width = height = 240;
-            break;
-        case 4:
-            width = height = 320;
-            break;
-        case 5:
-            width = 400;
-            height = 410;
-            break;
-        case 6:
-            width = 480;
-            height = 490;
-            break;
-        case 7:
-            width = 560;
-            height = 570;
-            break;
-        case 8:
-            width = 635;
-            height = 645;
-            break;
-        case 9:
-            width = 715;
-            height = 720;
-            break;
-        case 10:
-            width = 795;
-            height = 805;
-            break;
-        case 11:
-            width = 875;
-            height = 900;
-            break;
-        default:
-            width = height = 320; // Default to 4x4 dimensions
-    }
+    const dimensions = {
+        2: { width: 160, height: 160 },
+        3: { width: 240, height: 240 },
+        4: { width: 320, height: 320 },
+        5: { width: 400, height: 410 },
+        6: { width: 480, height: 490 },
+        7: { width: 560, height: 570 },
+        8: { width: 635, height: 645 },
+        9: { width: 715, height: 720 },
+        10: { width: 795, height: 805 },
+        11: { width: 875, height: 900 },
+        default: { width: 320, height: 320 }
+    };
 
-    // Set the width and height of the puzzle board
+    const { width, height } = dimensions[newSize] || dimensions.default;
+
     document.getElementById("board").style.width = width + "px";
     document.getElementById("board").style.height = height + "px";
 
-    // Override puzzle dimensions in the JavaScript file
     rows = newSize;
     columns = newSize;
-
-    // Reset turns counter
     turns = 0;
     document.getElementById("turns").innerText = turns;
-
-    // Clear board and pieces container
     document.getElementById("board").innerHTML = "";
     document.getElementById("pieces").innerHTML = "";
-
-    // Reinitialize the board with the new size
     initializeBoard();
+}
+
+function changePuzzlePiecesSizeInJavaScriptFile(newSize) {
+    console.log("New size:", newSize);
+
+    const dimensions = {
+        2: { width: 1040, height: 160 },
+        3: { width: 1040, height: 160 },
+        4: { width: 1040, height: 160 },
+        5: { width: 1040, height: 160 },
+        6: { width: 1430, height: 160 },
+        7: { width: 1430, height: 240 },
+        8: { width: 1430, height: 320 },
+        9: { width: 1590, height: 410 },
+        10: { width: 1590, height: 410 },
+        11: { width: 1585, height: 560 },
+        default: { width: 1430, height: 160 }
+    };
+
+    const { width, height } = dimensions[newSize] || dimensions.default;
+
+    document.getElementById("pieces").style.width = width + "px";
+    document.getElementById("pieces").style.height = height + "px";
 }
 
 //-----------------------------------------------------//
 
 
-// Function to show the image selection popup
-function showImageSelectionPopup() {
+// Function to show the image selection popup with appropriate images based on the selected level
+function showImageSelectionPopup(selectedLevel) {
+    const imageSelectionForm = document.getElementById('imageSelectionForm');
+    const imageOptions = imageSelectionForm.querySelectorAll('input[type="radio"]');
+    
+    // Hide all images
+    imageOptions.forEach(option => {
+        option.parentNode.style.display = 'none';
+    });
+
+    // Determine which images to show based on the selected level
+    let startIdx = 0;
+    if (selectedLevel >= 2 && selectedLevel <= 5) {
+        startIdx = 0;
+    } else if (selectedLevel >= 6 && selectedLevel <= 9) {
+        startIdx = 4;
+    } else if (selectedLevel >= 10 && selectedLevel <= 11) {
+        startIdx = 6; // Start from index 6 for levels 9 and 10
+    }
+
+    // Show appropriate images
+    for (let i = startIdx; i < startIdx + 4 && i < imageOptions.length; i++) {
+        imageOptions[i].parentNode.style.display = 'block';
+    }
+
     document.getElementById('imageSelectionPopup').style.display = 'block';
 }
+
+
 
 // Function to handle image selection
 function selectImage() {
@@ -339,8 +367,10 @@ function selectLevel() {
         if (selectedLevelValue <= highestLevelAttempted) {
             // Set puzzle size based on the selected level
             changePuzzleSizeInJavaScriptFile(selectedLevelValue);
-            // Show the image selection popup
-            showImageSelectionPopup();
+            // Show the image selection popup with appropriate images based on the selected level
+            showImageSelectionPopup(selectedLevelValue);
+            // Change the title based on the selected level
+            changeTitle(selectedLevelValue);
             // Set levelSelected flag to true
             levelSelected = true;
             // Enable the "Check Puzzle" button
@@ -352,6 +382,14 @@ function selectLevel() {
         alert('Please select a level.');
     }
 }
+
+// Function to change the title based on the selected level
+function changeTitle(selectedLevel) {
+    const levelTitle = document.getElementById('levelTitle');
+    levelTitle.textContent = `Level ${selectedLevel}`;
+}
+
+
 
 
 // Function to toggle the sidebar
