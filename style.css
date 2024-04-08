@@ -3,53 +3,36 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #030C33; /* Updated background color 030C33*/
+    background-color: #030C33;
 	position: relative;
 	text-align: center;
   }
 
-/* -------------- INDEX -------------- */
-/* Style for the clickable image */
+/* Index Styles */
 #clickableImage {
     width: auto; /* Set image width to 100% of its container */
     height: auto; /* Let the height adjust automatically based on the aspect ratio */
     display: block;
     margin: 0 auto;
-    cursor: pointer; /* Change cursor to pointer */
 }
-
-
 
 /* Style for the clickable image */
-#clickableImage {
+#clickableImage:hover {
     cursor: pointer; /* Change cursor to pointer */
 }
 
-#clickableImage:hover {
-    /* Define styles when hovering over the image */
-    /* You can change the cursor style here if needed */
-}
-
-/* -------------- MAIN MENU -------------- */
+/* Main Menu Styles */
 .main-menu {
     background-image: url("img/main-menue-background.jpg"); /* Set background image */
     background-size: cover; /* Cover the entire background */
 }
 
-.container {
-    text-align: center; /* Center align content */
-}
-
-.centered-image img {
+.chose-your-mode-image img {
     display: block; /* Make sure image is treated as a block element */
     margin: 0 auto; /* Center align horizontally */
 	margin-bottom: 50px;
 	width: 45%;
 	height: 45%;
-}
-
-.big-title {
-    margin-bottom: 100px; /* Add some space below the title */
 }
 
 .modes {
@@ -80,13 +63,12 @@ body {
     opacity: 0.8; /* Dim the button slightly on hover */
     transition: opacity 0.3s ease; /* Smooth transition */
 }
-/* -------------- CUSTOM -------------- */
 
+/* Custom/Levels Styles */
 #board {
     width: 400px;
     height: 400px;
     border: 2px solid purple;
-
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -98,13 +80,10 @@ body {
     border: 0.5px solid lightblue;
 }
 
-
-
 #pieces {
     width: 1040px;
     height: 160px;
     border: 2px solid purple;
-
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -120,9 +99,7 @@ body {
     margin-top: 20px;
 }
 
-/*----------------------------------------------------*/
-
-/* CSS for the left side navigation menu */
+/* Left Side Navigation Menu Styles */
 .sidenav {
     height: 100%;
     width: 200px;
@@ -136,7 +113,6 @@ body {
     transition: width 0.5s; /* Add transition for smooth animation */
 }
 
-/* CSS for the navigation bar */
 .sidenav button, #uploadForm {
     margin-bottom: 25px; /* Add margin below each button */
 }
@@ -158,63 +134,48 @@ body {
     outline: none;
 }
 
-/* Add new class for the Preview Completed Puzzle button */
-#previewButton {
-    display: block;
+#sizeForm, .main-menu-link { /* Styles for adjustin of puzzle size and main menu links */
+    margin-top: 20px;
+    padding-left: 10px; 
 }
 
-/* Hide the button when the sidebar is minimized */
-.minimized #previewButton {
-    display: none;
-}
-
-/* Style the size dropdown */
-#sizeForm, #main-menu-link {
-    margin-top: 20px; /* Adjust margin to prevent overlap with the toggle button */
-    padding-left: 10px; /* Add padding to align with toggle button */
-}
-
-/* Style the select dropdown */
-#sizeDropdown {
+#sizeDropdown { /* Style the nav dropdown */
     width: calc(100% - 20px); /* Adjust width to account for padding */
 }
 
-#levelForm label {
+#level-selection label { /* styles the Radio buttons for level selection */
     display: block;
     margin-bottom: 10px;
-    color: #fff; /* Change text color */
+    color: #fff;
 }
 
-#levelForm button {
+#level-selection button { /* styles the Radio buttons submit button for level selection */
     margin-top: 10px;
 }
 
-/* Hide level selection form when sidebar is minimized */
-.minimized #levelForm {
-    display: none;
+.minimized #level-selection {
+    display: none; /* Hide level selection form when sidebar is minimized */
 }
 
-/* CSS for the content */
+/* Content Styles */
 .content {
-    margin-left: 250px; /* Adjust margin based on the width of the sidebar */
+    margin-left: 250px; 
     padding: 20px;
     transition: margin-left 0.5s; /* Add transition for smooth animation */
 }
 
 .sidebar-closed .content {
-    margin-left: 50px; /* Adjust margin when sidebar is closed */
+    margin-left: 50px;
 }
 
-/* Hide elements when sidebar is minimized */
-.minimized #main-menu-link,
+.minimized .main-menu-link,
 .minimized #sizeForm,
 .minimized #uploadForm,
 .minimized #Level-text {
-    display: none;
+    display: none; /* Hide elements when sidebar is minimized */
 }
 
-/*----------------------------------------------------*/
-/* Style the navigation links */
+/* Navigation Links Styles */
 .sidenav a, #sizeForm, #Level-text {
     padding: 10px 8px 10px 16px;
     text-decoration: none;
@@ -223,9 +184,8 @@ body {
     display: block;
 }
 
-/* Change color on hover */
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: #f1f1f1; /* Change color on hover */
 }
 
 .Custom, .Levels {
@@ -233,112 +193,12 @@ body {
     background-size: cover; /* Cover the entire background */
 }
 
+/* Counter Styles */
 .counter, #turns{
     color: #818181;
 }
 
-/* -------------- LEVELS -------------- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
-    grid-auto-rows: minmax(100px, auto); /* Auto adjust row height */
-    grid-gap: 10px; /* Gap between grid items */
-}
-
-.box, .merged-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff; /* White background */
-    border: 1px solid #000; /* Black border */
-    cursor: pointer;
-}
-
-.box:hover, .merged-box:hover {
-    background-color: #f0f0f0; /* Light gray background on hover */
-}
-
-.merged-box {
-    grid-column: span 2; /* Merged box spans 2 columns */
-}
-
-
-/* -------------- LEVELS -------------- */
-/* Style for the level selection grid */
-#levelPopup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 2px solid black;
-    z-index: 1000;
-}
-
-#levelPopup label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-#levelPopup input[type="radio"] {
-    margin-right: 10px;
-}
-
-#levelPopup button {
-    margin-top: 10px;
-}
-
-
-
-/* Modal styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
-}
-
-/* Close button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-.image-option {
-    width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Optional: Add some spacing between images */
-}
-
-
-
-/* Style for the congratulations popup */
+/* Congratulations Popup Styles */
 #congratulationsPopup {
     display: none;
     position: fixed;
@@ -348,7 +208,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #congratulationsPopup .modal-content {
@@ -357,18 +217,18 @@ body {
     margin: 15% auto; /* Center the popup */
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; /* Adjust width as needed */
+    width: 50%;
     text-align: center;
 }
 #congratulationsPopup button {
-    background-color: rgb(11, 105, 77); /* Change button color to red */
-    color: #e4b20d; /* Change text color to white */
-    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: rgb(11, 105, 77); 
+    color: #e4b20d;
+    padding: 10px 20px;
     border: none;
     cursor: pointer;
     margin: 5px;
 }
-/* Close button */
+
 #congratulationsPopup .close {
     color: #aaa;
     float: right;
@@ -383,16 +243,86 @@ body {
     cursor: pointer;
 }
 
+/* Preview Popup Styles */
+.previewButton {
+    display: block;
+}
+
+.minimized .previewButton { /* Hide the button when the sidebar is minimized */
+    display: none;
+}
+
+/* Levels Styles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+    grid-auto-rows: minmax(100px, auto); /* Auto adjust row height */
+    grid-gap: 10px; /* Gap between grid items */
+}
+
+.box, .merged-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.box:hover, .merged-box:hover {
+    background-color: #f0f0f0;
+}
+
+.merged-box {
+    grid-column: span 2; /* Merged box spans 2 columns */
+}
+
+.level-image-option {
+    width: 150px; 
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Optional: Add some spacing between images */
+}
+
+/* Close button Styles */
+.close { 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Content */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
 /* CSS for the preview popup */
 .modal-content {
     background-color: rgba(0, 0, 0, 0.686);
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 5% auto; /* 5% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
     max-width: 600px; /* Limit max width for smaller screens */
     position: relative; /* Relative position for close button */
     text-align: center; /* Center align content */
+
 }
 
 .modal-content img {
@@ -400,14 +330,7 @@ body {
     height: auto; /* Maintain aspect ratio */
 }
 
-
-/* Close button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    color: red;
-}
-
+/* Add some space below the title*/ 
+.big-title {
+    margin-bottom: 100px; 
+} 

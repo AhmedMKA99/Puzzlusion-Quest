@@ -1,22 +1,14 @@
-// Define puzzle dimensions
-let rows = 5;
-let columns = 5;
-
-// Initialize turns counter
-let turns = 0;
-
-// Initialize current and other tile variables for dragging
-let currTile;
-let otherTile;
-
-// Store original order of puzzle pieces
-let originalOrder = [];
-
-// Store original puzzle piece sources
-let originalSources = [];
-
+let rows = 5; // Define puzzle row dimensions
+let columns = 5; // Define puzzle column dimensions
+let turns = 0; // Initialize turns counter
+let currTile; // Initialize currentile variable for dragging
+let otherTile; // Initialize otherTile variable for dragging
+let originalOrder = []; // Store original order of puzzle pieces
+let originalSources = []; // Store original puzzle piece sources
 let levelSelected = false; // Flag to track if a level has been selected
+let highestLevelAttempted = 2; // Because level 2 is always accessible but in reality level 2 is level 1
 
+// Initialization and Event Listeners:
 document.addEventListener("DOMContentLoaded", function() {
     // Get the clickable image element
     const clickableImage = document.getElementById("clickableImage");
@@ -71,9 +63,6 @@ function handleImage() {
     }
 }
 
-
-
-
 // Function to create puzzle pieces from user-selected image
 function createPieces(imageSrc) {
     const piecesContainer = document.getElementById("pieces");
@@ -122,7 +111,6 @@ function shuffleArray(array) {
     }
 }
 
-
 // Function to enable the "Check Puzzle" button
 function enableCheckButton() {
     const checkButton = document.getElementById('checkButton');
@@ -134,58 +122,6 @@ function disableCheckButton() {
     const checkButton = document.getElementById('checkButton');
     checkButton.disabled = true;
 }
-
-// Function to check if the puzzle is completed
-function isPuzzleCompleted() {
-    const boardImages = document.querySelectorAll("#board img");
-    for (let i = 0; i < boardImages.length; i++) {
-        if (boardImages[i].src !== originalSources[i]) {
-            return false; // Puzzle is not completed
-        }
-    }
-    return true; // Puzzle is completed
-}
-
-// Function to show the congratulations popup
-function showCongratulationsPopup() {
-    document.getElementById('congratulationsPopup').style.display = 'block';
-}
-
-// Function to hide the congratulations popup
-function hideCongratulationsPopup() {
-    document.getElementById('congratulationsPopup').style.display = 'none';
-}
-
-// Function to attempt the next level
-function attemptNextLevel() {
-    alert(highestLevelAttempted);
-    // Increment the highestLevelAttempted
-    highestLevelAttempted=highestLevelAttempted+1;
-    alert(highestLevelAttempted);
-    // Hide the congratulations popup
-    hideCongratulationsPopup();
-
-    // Show the level selection form and automatically select the next level
-    const nextLevelRadioButton = document.querySelector(`input[name="level"][value="${highestLevelAttempted}"]`);
-    if (nextLevelRadioButton) {
-        nextLevelRadioButton.checked = true;
-        selectLevel(); // Trigger level selection
-    } else {
-        alert('Congratulations! You have completed all available levels.');
-    }
-}
-
-// Function to return to the menu page
-function returnToMenu() {
-    // Redirect to the menu page
-    window.location.href = 'main_menu.html';
-}
-
-// Function to refresh the current page (play again)
-function playAgain() {
-    window.location.reload(); // Reloads the current page
-}
-
 
 // Function to check if the puzzle is solved correctly
 function checkPuzzle() {
@@ -216,9 +152,53 @@ function checkPuzzle() {
     }
 }
 
+// Function to check if the puzzle is completed
+function isPuzzleCompleted() {
+    const boardImages = document.querySelectorAll("#board img");
+    for (let i = 0; i < boardImages.length; i++) {
+        if (boardImages[i].src !== originalSources[i]) {
+            return false; // Puzzle is not completed
+        }
+    }
+    return true; // Puzzle is completed
+}
 
+// Function to show the congratulations popup
+function showCongratulationsPopup() {
+    document.getElementById('congratulationsPopup').style.display = 'block';
+}
 
+// Function to hide the congratulations popup
+function hideCongratulationsPopup() {
+    document.getElementById('congratulationsPopup').style.display = 'none';
+}
 
+// Function to attempt the next level
+function attemptNextLevel() {
+    // Increment the highestLevelAttempted
+    highestLevelAttempted++;
+    // Hide the congratulations popup
+    hideCongratulationsPopup();
+    // Show the level selection form and automatically select the next level
+    const nextLevelRadioButton = document.querySelector(`input[name="level"][value="${highestLevelAttempted}"]`);
+    if (nextLevelRadioButton) {
+        nextLevelRadioButton.checked = true;
+        selectLevel(); // Trigger level selection
+    } else {
+        alert('Congratulations! You have completed all available levels.');
+    }
+}
+
+// Function to return to the menu page
+function returnToMenu() {
+    // Redirect to the menu page
+    window.location.href = 'main_menu.html';
+}
+
+// Function to play again 
+function playAgain() {
+    window.location.reload(); // Reloads the current page
+}
 
 // Function to handle the dragging of puzzle pieces
 function dragStart() {
@@ -240,6 +220,7 @@ function dragDrop(e) {
     document.getElementById("turns").innerText = turns;
 }
 
+// Function to change the puzzle size
 function changePuzzleSize() {
     var selectedSize = parseInt(document.getElementById("sizeDropdown").value);
     console.log("Selected size:", selectedSize);
@@ -248,6 +229,7 @@ function changePuzzleSize() {
     changePuzzlePiecesSizeInJavaScriptFile(selectedSize);
 }
 
+// Function to change the puzzle board size in the JavaScript file
 function changePuzzleSizeInJavaScriptFile(newSize) {
     console.log("New size:", newSize);
 
@@ -279,6 +261,7 @@ function changePuzzleSizeInJavaScriptFile(newSize) {
     initializeBoard();
 }
 
+// Function to change the puzzle pieces size in the JavaScript filethe box where the picies go
 function changePuzzlePiecesSizeInJavaScriptFile(newSize) {
     console.log("New size:", newSize);
 
@@ -301,9 +284,6 @@ function changePuzzlePiecesSizeInJavaScriptFile(newSize) {
     document.getElementById("pieces").style.width = width + "px";
     document.getElementById("pieces").style.height = height + "px";
 }
-
-//-----------------------------------------------------//
-
 
 // Function to show the image selection popup with appropriate images based on the selected level
 function showImageSelectionPopup(selectedLevel) {
@@ -333,8 +313,6 @@ function showImageSelectionPopup(selectedLevel) {
     document.getElementById('imageSelectionPopup').style.display = 'block';
 }
 
-
-
 // Function to handle image selection
 function selectImage() {
     const selectedImage = document.querySelector('input[name="selectedImage"]:checked');
@@ -354,8 +332,6 @@ function hideImageSelectionPopup() {
     document.getElementById('imageSelectionPopup').style.display = 'none';
 }
 
-// Variable to store the highest level attempted by the user
-let highestLevelAttempted = 2; // Assuming level 2 is always accessible
 
 // Function to handle level selection
 function selectLevel() {
@@ -389,16 +365,13 @@ function changeTitle(selectedLevel) {
     levelTitle.textContent = `Level ${selectedLevel}`;
 }
 
-
-
-
 // Function to toggle the sidebar
 function toggleSidebar() {
     var sidebar = document.querySelector(".sidenav");
     var content = document.querySelector(".content");
-    var sizeForm = document.getElementById("levelForm"); // Assuming levelForm corresponds to sizeForm
-    var uploadForm = document.getElementById("imageSelectionForm"); // Assuming imageSelectionForm corresponds to uploadForm
-    var previewButton = document.querySelector(".preview-button"); // Assuming the button has a class named "preview-button"
+    var sizeForm = document.getElementById("sizeForm");
+    var uploadForm = document.getElementById("uploadForm");
+    var previewButton = document.querySelector(".previewButton");
 
     sidebar.classList.toggle("minimized");
     content.classList.toggle("sidebar-closed");
@@ -414,8 +387,6 @@ function toggleSidebar() {
         previewButton.style.display = "block";
     }
 }
-
-
 
 // Function to preview the completed puzzle
 function previewCompletedPuzzle() {
@@ -471,7 +442,7 @@ function previewCompletedPuzzleLevels() {
         const previewPopup = document.getElementById('previewPopup');
         previewPopup.style.display = 'block';
     } else {
-        alert("Please select an image first.");
+        alert('Please select an image.');
     }
 }
 
@@ -480,3 +451,4 @@ function closePreviewPopup() {
     const previewPopup = document.getElementById('previewPopup');
     previewPopup.style.display = 'none';
 }
+
