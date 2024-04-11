@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Custom Puzzle</title>
@@ -9,10 +9,11 @@
     <!-- Sidebar -->
     <div class="sidenav" id="sidenav">
         <button class="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button>
-        <a class="main-menu-link" href="main_menu.html">Return to Main</a>
+        <a class="main-menu-link" href="main_menu.html">⾕ Return to Main ⾕</a>
+        <a class="main-menu-link" onclick="clearBoard()" >↻ Clear board ⟳</a>
         <!-- Form for choosing puzzle size -->
         <form id="sizeForm" onsubmit="return false;">
-            <label for="sizeDropdown">Choose Size:</label>
+            <label for="sizeDropdown">📏 Choose Size: 📏</label>
             <select id="sizeDropdown" onchange="changePuzzleSize()">
                 <option value="" disabled selected>Choose One</option>
                 <!-- Options for puzzle size -->
@@ -30,8 +31,8 @@
         </form>
         <!-- Form for uploading image -->
         <form id="uploadForm" action="#" method="post">
-            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImage()">
-            <a href="#" onclick="document.getElementById('imageInput').click();">Choose Image</a>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImage(value)">
+            <a href="#" onclick="document.getElementById('imageInput').click();">📷Choose Image📷</a>
             <input type="submit" value="Load Image" style="display: none;">
         </form>
         <button class="previewButton" onclick="previewCompletedPuzzleCustom()">Preview Completed Puzzle</button>
@@ -48,7 +49,7 @@
         <!-- Container for puzzle pieces -->
         <div class="pieces-container" id="pieces"></div>
         <!-- Button to check puzzle -->
-        <button onclick="checkPuzzle()">Check Puzzle</button>
+        <button class="CheckPuzzleButton" onclick="checkPuzzle()">Check Puzzle</button>
     </main>
 
     <!-- Preview popup -->
@@ -71,7 +72,7 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- External JavaScript file -->
     <script src="script.js"></script>
     <!-- Include the audio control JavaScript file -->
     <script src="audioControl.js" defer></script>

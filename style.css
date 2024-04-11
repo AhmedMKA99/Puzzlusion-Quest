@@ -87,6 +87,7 @@ body {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 #pieces img {
@@ -113,13 +114,15 @@ body {
     transition: width 0.5s; /* Add transition for smooth animation */
 }
 
+
 .sidenav button, #uploadForm {
     margin-bottom: 25px; /* Add margin below each button */
 }
 
 .minimized {
-    width: 90px; /* Change width when minimized */
+    width: 100px; /* Change width when minimized */
 }
+
 
 /* Style the toggle button */
 #toggleButton {
@@ -153,9 +156,6 @@ body {
     margin-top: 10px;
 }
 
-.minimized #level-selection {
-    display: none; /* Hide level selection form when sidebar is minimized */
-}
 
 /* Content Styles */
 .content {
@@ -165,25 +165,50 @@ body {
 }
 
 .sidebar-closed .content {
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .minimized .main-menu-link,
 .minimized #sizeForm,
 .minimized #uploadForm,
-.minimized #Level-text {
+.minimized #Level-text,
+.minimized #level-selection {
     display: none; /* Hide elements when sidebar is minimized */
 }
 
-/* Navigation Links Styles */
+/* Navigation Links/Button Styles */
 .sidenav a, #sizeForm, #Level-text {
     padding: 10px 8px 10px 16px;
     text-decoration: none;
     font-size: 18px;
-    color: #818181;
+    color: #ffffff91;
     display: block;
 }
 
+
+
+.sidenav button {
+    font-family: Arial, sans-serif;
+    font-size: medium;
+    color: #00d170;
+    background-color: #05071d;
+    padding: 6px;
+    margin-bottom: 10px;
+}
+
+.CheckPuzzleButton {
+    font-family: Arial, sans-serif;
+    font-size: medium;
+    color: #00d170;
+    background-color: #2a058d;
+    padding: 6px;
+    
+}
+
+.button{
+    color: #000;
+    background-color: #00d170;
+}
 .sidenav a:hover {
     color: #f1f1f1; /* Change color on hover */
 }
@@ -281,6 +306,7 @@ body {
     width: 150px; 
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px; /* Optional: Add some spacing between images */
+    
 }
 
 /* Close button Styles */
@@ -309,7 +335,7 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: #00000066; /* Black w/ opacity */
 }
 
 /* CSS for the preview popup */
@@ -322,7 +348,14 @@ body {
     max-width: 600px; /* Limit max width for smaller screens */
     position: relative; /* Relative position for close button */
     text-align: center; /* Center align content */
+    color:#00d170;
 
+}
+
+.modal-content button{
+    color:#00d170;
+    background-color: #0c114e;
+    font-size: large;
 }
 
 .modal-content img {

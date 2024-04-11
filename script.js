@@ -7,6 +7,7 @@ let originalOrder = []; // Store original order of puzzle pieces
 let originalSources = []; // Store original puzzle piece sources
 let levelSelected = false; // Flag to track if a level has been selected
 let highestLevelAttempted = 2; // Because level 2 is always accessible but in reality level 2 is level 1
+let sizeChosen = false; // Flag to track whether the user has chosen a size
 
 // Initialization and Event Listeners:
 document.addEventListener("DOMContentLoaded", function() {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function initializeBoard() {
     const board = document.getElementById("board");
     originalOrder = []; // Clear the originalOrder array
+    let sizeChosen = true;
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
             const tile = document.createElement("img");
@@ -38,6 +40,16 @@ function initializeBoard() {
     }
 }
 
+function clearBoard(){
+    
+    const piecesContainer = document.getElementById('pieces');
+    // Remove existing puzzle pieces if they exist
+    piecesContainer.innerHTML = '';
+    board.innerHTML = '';
+    sizeChosen = false;
+}
+
+
 // Function to handle image selection and initialize puzzle pieces
 function handleImage() {
     const sizeDropdown = document.getElementById("sizeDropdown");
@@ -51,8 +63,14 @@ function handleImage() {
     if (!sizeDropdown.value) {
         alert("Please select a board size before choosing an image.");
         return; // Exit the function if the board size is not selected
+    }else {
+        if (sizeChosen == false){
+            alert("Please select a board size before choosing an image.");
+            return; // Exit the function if the board size is not selected
+        }
     }
 
+    
     const file = imageInput.files[0];
     if (file) {
         const reader = new FileReader();
@@ -66,6 +84,8 @@ function handleImage() {
 // Function to create puzzle pieces from user-selected image
 function createPieces(imageSrc) {
     const piecesContainer = document.getElementById("pieces");
+    piecesContainer.innerHTML = ''; // Clear previous puzzle pieces
+    originalSources = []; // Clear the originalSources array
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
     const image = new Image();
@@ -129,7 +149,12 @@ function checkPuzzle() {
     if (currentPage.includes("levels.html")) {
         if (levelSelected) {
             if (isPuzzleCompleted()) {
-                showCongratulationsPopup(); // Show the congratulations popup
+                const highestLevelAttempted = localStorage.getItem("highestLevelAttempted");
+                if (parseInt(highestLevelAttempted) === 11) {
+                    congratulationsPopupAllLevels(); // Call the all levels congratulations popup
+                } else {
+                    showCongratulationsPopup(); // Call the regular congratulations popup
+                }
             } else {
                 alert("Sorry, the puzzle is not yet solved.");
             }
@@ -152,6 +177,7 @@ function checkPuzzle() {
     }
 }
 
+
 // Function to check if the puzzle is completed
 function isPuzzleCompleted() {
     const boardImages = document.querySelectorAll("#board img");
@@ -168,9 +194,16 @@ function showCongratulationsPopup() {
     document.getElementById('congratulationsPopup').style.display = 'block';
 }
 
+function congratulationsPopupAllLevels() {
+    document.getElementById('congratulations-Popup-All-Levels').style.display = 'block';
+}
+
+
+
 // Function to hide the congratulations popup
 function hideCongratulationsPopup() {
     document.getElementById('congratulationsPopup').style.display = 'none';
+    document.getElementById('congratulations-Popup-All-Levels').style.display = 'none';
 }
 
 // Function to attempt the next level
@@ -203,15 +236,20 @@ function playAgain() {
 // Function to handle the dragging of puzzle pieces
 function dragStart() {
     currTile = this;
-}
-
-function dragOver(e) {
-    e.preventDefault();
+    // Check if the current tile is the gray placeholder tile
+    if (currTile.src.endsWith("gray.png")) {
+        // If it is, set currTile to null to prevent swapping
+        currTile = null;
+    }
 }
 
 function dragDrop(e) {
     e.preventDefault();
     otherTile = this;
+    // Check if currTile is null (gray placeholder tile)
+    if (!currTile) {
+        return; // Prevent swapping and counter increment
+    }
     const currSrc = currTile.src;
     const otherSrc = otherTile.src;
     currTile.src = otherSrc;
@@ -219,6 +257,12 @@ function dragDrop(e) {
     turns++;
     document.getElementById("turns").innerText = turns;
 }
+function dragOver(e) {
+    e.preventDefault();
+}
+
+
+
 
 // Function to change the puzzle size
 function changePuzzleSize() {
@@ -227,6 +271,7 @@ function changePuzzleSize() {
 
     changePuzzleSizeInJavaScriptFile(selectedSize);
     changePuzzlePiecesSizeInJavaScriptFile(selectedSize);
+    sizeChosen = true;
 }
 
 // Function to change the puzzle board size in the JavaScript file
@@ -342,6 +387,7 @@ function selectLevel() {
         // Check if the selected level is higher than the highest level attempted
         if (selectedLevelValue <= highestLevelAttempted) {
             // Set puzzle size based on the selected level
+            changePuzzlePiecesSizeInJavaScriptFile(selectedLevelValue);
             changePuzzleSizeInJavaScriptFile(selectedLevelValue);
             // Show the image selection popup with appropriate images based on the selected level
             showImageSelectionPopup(selectedLevelValue);
@@ -362,7 +408,7 @@ function selectLevel() {
 // Function to change the title based on the selected level
 function changeTitle(selectedLevel) {
     const levelTitle = document.getElementById('levelTitle');
-    levelTitle.textContent = `Level ${selectedLevel}`;
+    levelTitle.textContent = `Level ${selectedLevel-1}`;
 }
 
 // Function to toggle the sidebar
@@ -442,7 +488,7 @@ function previewCompletedPuzzleLevels() {
         const previewPopup = document.getElementById('previewPopup');
         previewPopup.style.display = 'block';
     } else {
-        alert('Please select an image.');
+        alert('Please select an image/level.');
     }
 }
 

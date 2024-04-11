@@ -9,9 +9,8 @@
      <!-- Sidebar -->
     <div  class="sidenav">
         <button class="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button>
-        <a class="main-menu-link" href="main_menu.html">Return to Main</a>   
-        <!-- Level selection options moved here -->
-        <h3 id="Level-text">Choose a Level</h3>
+        <a class="main-menu-link" href="main_menu.html">⾕ Return to Main ⾕ </a>
+        <h3 id="Level-text">⇩ Choose a Level ⇩</h3>
         <form id="level-selection">
             <!-- Radio buttons for level selection -->
             <label><input type="radio" name="level" value="2"> Level 1</label>
@@ -61,7 +60,7 @@
          <!-- Counter For Turn Taken -->
         <h2 class="counter">Turns: <span id="turns">0</span></h2>
         <div class="pieces-container" id="pieces"></div>
-        <button onclick="checkPuzzle()">Check Puzzle</button>
+        <button class="CheckPuzzleButton" onclick="checkPuzzle()">Check Puzzle</button>
     </main>   
 
         <!-- Congratulations popup -->
@@ -71,6 +70,17 @@
                 <h2>👏Congratulations!👏</h2>
                 <p>🎉🎈The puzzle is solved correctly.🎈🎉</p>
                 <button onclick="attemptNextLevel()">Attempt Next Level ➜</button>
+                <button onclick="returnToMenu()">Return to Menu ⾕</button>
+            </div>
+        </div>
+
+        <!-- Congratulations popup when all levels are completed -->
+        <div id="congratulations-Popup-All-Levels" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="congratulationsPopupAllLevels()">&times;</span>
+                <h2>👏Congratulations!👏</h2>
+                <p>🎉🎈All puzzles Have been solved correctly.🎈🎉</p>
+                <p>🎊YOU HAVE COMPLETED ALL THE LEVELS NOW TRY CUSTOMS!🎊</p>
                 <button onclick="returnToMenu()">Return to Menu ⾕</button>
             </div>
         </div>
