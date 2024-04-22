@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Levels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  class="Levels">
+     <!-- Sidebar -->
+    <div  class="sidenav">
+        <button class="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button>
+        <a class="main-menu-link" href="main_menu.html">⾕ Return to Main ⾕ </a>
+        <h3 id="Level-text">⇩ Choose a Level ⇩</h3>
+        <form id="level-selection">
+            <!-- Radio buttons for level selection -->
+            <label><input type="radio" name="level" value="2"> Level 1</label>
+            <label><input type="radio" name="level" value="3"> Level 2</label>
+            <label><input type="radio" name="level" value="4"> Level 3</label>
+            <label><input type="radio" name="level" value="5"> Level 4</label>
+            <label><input type="radio" name="level" value="6"> Level 5</label>
+            <label><input type="radio" name="level" value="7"> Level 6</label>
+            <label><input type="radio" name="level" value="8"> Level 7</label>
+            <label><input type="radio" name="level" value="9"> Level 8</label>
+            <label><input type="radio" name="level" value="10"> Level 9</label>
+            <label><input type="radio" name="level" value="11"> Level 10</label>
+            <!-- Button to select level -->
+            <button type="button" onclick="selectLevel()">Submit Level</button>
+        </form>
+        <button class="previewButton" onclick="previewCompletedPuzzleLevels()">Preview Completed Puzzle</button>
+    </div>
+
+    <!-- Image selection pop-up -->
+    <div id="imageSelectionPopup" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideImageSelectionPopup()">&times;</span>
+            <h3>Choose an Image</h3>
+            <form id="imageSelectionForm">
+                <!-- Radio buttons for image selection -->
+                <label><input type="radio" name="selectedImage" value="img/img1.jpg"><img src="img/img1.jpg" alt="Image 1" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img2.jpg"><img src="img/img2.jpg" alt="Image 2" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img3.jpg"><img src="img/img3.jpg" alt="Image 3" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img4.jpg"><img src="img/img4.jpg" alt="Image 4" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img5.jpg"><img src="img/img5.jpg" alt="Image 5" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img6.jpg"><img src="img/img6.jpg" alt="Image 6" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img7.jpg"><img src="img/img7.jpg" alt="Image 7" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img8.jpg"><img src="img/img8.jpg" alt="Image 8" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img9.jpg"><img src="img/img9.jpg" alt="Image 9" class="level-image-option"></label>
+                <label><input type="radio" name="selectedImage" value="img/img10.jpg"><img src="img/img10.jpg" alt="Image 10" class="level-image-option"></label>
+                <!-- Button to Submit  selected image -->
+                <button type="button" onclick="selectImage()">Select</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <h1 id="levelTitle" class="counter">Level</h1>
+        <br>
+        <div id="board"></div>
+         <!-- Counter For Turn Taken -->
+        <h2 class="counter">Turns: <span id="turns">0</span></h2>
+        <div class="pieces-container" id="pieces"></div>
+        <button class="CheckPuzzleButton" onclick="checkPuzzle()">Check Puzzle</button>
+    </main>   
+
+        <!-- Congratulations popup -->
+        <div id="congratulationsPopup" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="hideCongratulationsPopup()">&times;</span>
+                <h2>👏Congratulations!👏</h2>
+                <p>🎉🎈The puzzle is solved correctly.🎈🎉</p>
+                <button onclick="attemptNextLevel()">Attempt Next Level ➜</button>
+                <button onclick="returnToMenu()">Return to Menu ⾕</button>
+            </div>
+        </div>
+
+        <!-- Congratulations popup when all levels are completed -->
+        <div id="congratulations-Popup-All-Levels" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="congratulationsPopupAllLevels()">&times;</span>
+                <h2>👏Congratulations!👏</h2>
+                <p>🎉🎈All puzzles Have been solved correctly.🎈🎉</p>
+                <p>🎊YOU HAVE COMPLETED ALL THE LEVELS NOW TRY CUSTOMS!🎊</p>
+                <button onclick="returnToMenu()">Return to Menu ⾕</button>
+            </div>
+        </div>
+
+    <!-- Popup for previewing the completed puzzle -->
+    <div id="previewPopup" class="modal">
+        <div class="modal-content">
+            <!-- Close button for the modal -->
+            <span class="close" onclick="closePreviewPopup()">&times;</span>
+            <!-- Image container for displaying the completed puzzle -->
+            <img id="previewImage" src="" alt="Preview Completed Puzzle">
+        </div>
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="script.js"></script>
+    <!-- Include the audio control JavaScript file -->
+    <script src="audioControl.js" defer></script>
+</body>
+</html>

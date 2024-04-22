@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Get the levels and custom images elements
-    const levelsImage = document.getElementById("levelsImage");
-    const customImage = document.getElementById("customImage");
+    const levelsImage = document.getElementById("levels");
+    const customImage = document.getElementById("custom");
 
     // Add click event listeners to the images
     levelsImage.addEventListener("click", function() {
