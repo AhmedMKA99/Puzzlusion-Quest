@@ -20,21 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "main_menu.html";
         clickSound();
     });
-
-    // Get the levels and custom images elements
-    const levelsImage = document.getElementById("levels");
-    const customImage = document.getElementById("custom");
-
-    // Add click event listeners to the images
-    levelsImage.addEventListener("click", function() {
-        redirectTo('lev.html');
-        clickSound();
-    });
-
-    customImage.addEventListener("click", function() {
-        redirectTo('custom.html');
-        clickSound();
-    });
 });
 
 
