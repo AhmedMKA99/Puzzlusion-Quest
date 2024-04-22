@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Add click event listeners to the images
     levelsImage.addEventListener("click", function() {
-        redirectTo('levels.html');
+        redirectTo('lev.html');
         clickSound();
     });
 
