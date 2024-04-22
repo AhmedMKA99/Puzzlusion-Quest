@@ -8,11 +8,16 @@
 </head>
 <body>
     <main>
-        <img id="clickableImage" src="img/index-background.jpg" alt="Background Image">
+        <img id="clickableImage" src="img/index-background.jpg" alt="Background Image" onclick="clickSound()">
         <script src="script.js"></script>
     <!-- Include the audio control JavaScript file -->
     <script src="audioControl.js" defer></script>
     </main>
+    <!-- Script to call playAudio() when the page loads -->
+    <script>
+        // Call playAudio() when the page loads
+        window.addEventListener("load", playAudio);
+    </script>
 </body>
 </html>
 

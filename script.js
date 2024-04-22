@@ -18,8 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
     clickableImage.addEventListener("click", function() {
         // Redirect the user to the main_menu.html page
         window.location.href = "main_menu.html";
+        clickSound();
     });
 });
+
 
 // Function to initialize the puzzle board with blank pieces
 function initializeBoard() {
@@ -240,7 +242,10 @@ function dragStart() {
     if (currTile.src.endsWith("gray.png")) {
         // If it is, set currTile to null to prevent swapping
         currTile = null;
+    }else{
+        playPickDropSound();
     }
+    
 }
 
 function dragDrop(e) {
@@ -256,7 +261,9 @@ function dragDrop(e) {
     otherTile.src = currSrc;
     turns++;
     document.getElementById("turns").innerText = turns;
+    playPickDropSound();
 }
+
 function dragOver(e) {
     e.preventDefault();
 }
