@@ -14,26 +14,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // Get the clickable image element
     const clickableImage = document.getElementById("clickableImage");
 
-    // Get references to the mode elements
-    var levelsMode = document.getElementById("levels-mode");
-    var customMode = document.getElementById("custom-mode");
-   
     // Add a click event listener to the image
     clickableImage.addEventListener("click", function() {
         // Redirect the user to the main_menu.html page
         window.location.href = "main_menu.html";
         clickSound();
     });
-
-    // Add click event listeners to redirect to the specified pages
-    levelsMode.addEventListener("click", function() {
-        window.location.href = "levels.html";
-    });
-
-    customMode.addEventListener("click", function() {
-        window.location.href = "custom.html";
-    });
 });
+
+function redirectTo(url) {
+    window.location.href = url;
+}
 
 
 // Function to initialize the puzzle board with blank pieces

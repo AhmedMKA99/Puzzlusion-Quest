@@ -45,6 +45,10 @@ body {
     text-align: center;
 }
 
+.main-menu-options:hover {
+    cursor: pointer; /* Change cursor to pointer */
+}
+
 .left-mode {
     margin-right: auto; /* Push Levels to the left */
 }
