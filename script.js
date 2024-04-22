@@ -20,11 +20,23 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "main_menu.html";
         clickSound();
     });
+
+    // Get the levels and custom images elements
+    const levelsImage = document.getElementById("levelsImage");
+    const customImage = document.getElementById("customImage");
+
+    // Add click event listeners to the images
+    levelsImage.addEventListener("click", function() {
+        redirectTo('levels.html');
+        clickSound();
+    });
+
+    customImage.addEventListener("click", function() {
+        redirectTo('custom.html');
+        clickSound();
+    });
 });
 
-function redirectTo(url) {
-    window.location.href = url;
-}
 
 
 // Function to initialize the puzzle board with blank pieces
