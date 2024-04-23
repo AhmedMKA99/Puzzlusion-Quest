@@ -157,7 +157,7 @@ function disableCheckButton() {
 // Function to check if the puzzle is solved correctly
 function checkPuzzle() {
     const currentPage = window.location.pathname;
-    if (currentPage.includes("levels.html")) {
+    if (currentPage.includes("Levels.html")) {
         if (levelSelected) {
             if (isPuzzleCompleted()) {
                 const highestLevelAttempted = localStorage.getItem("highestLevelAttempted");
@@ -172,7 +172,7 @@ function checkPuzzle() {
         } else {
             alert("Please select a level before checking the puzzle.");
         }
-    } else if (currentPage.includes("custom.html")) {
+    } else if (currentPage.includes("Custom.html")) {
         const sizeDropdown = document.getElementById("sizeDropdown");
         const imageInput = document.getElementById("imageInput");
         if (sizeDropdown.value && imageInput.files.length > 0) {
@@ -455,11 +455,11 @@ function previewCompletedPuzzle() {
     const currentPage = window.location.pathname;
 
     // Check if the user is on the Custom page
-    if (currentPage.includes("custom.html")) {
+    if (currentPage.includes("Custom.html")) {
         previewCompletedPuzzleCustom();
     }
     // Check if the user is on the Levels page
-    else if (currentPage.includes("levels.html")) {
+    else if (currentPage.includes("Levels.html")) {
         previewCompletedPuzzleLevels();
     }
     else {
