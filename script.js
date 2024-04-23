@@ -22,7 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// Function to display the modal when the page loads
+window.onload = function() {
+    document.getElementById('myAudio').style.display = 'block';
+};
 
+// Function to close the modal
+function closeModal() {
+    document.getElementById('myAudio').style.display = 'none';
+}
 
 // Function to initialize the puzzle board with blank pieces
 function initializeBoard() {
