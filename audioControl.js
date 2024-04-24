@@ -3,14 +3,11 @@ const audioFile = "background-audio.mp3";
 let audioOn = false;
 // Create the audio element
 const audio = new Audio(audioFile);
-
 // Set the audio to loop continuously
 audio.loop = true;
-
 // Preload the audio for smoother playback
 audio.preload = "auto";
-
-// Set the volume to 50%
+// Set the volume
 audio.volume = 0.1;
 
 // Function to play the audio
@@ -38,7 +35,7 @@ window.onbeforeunload = function() {
     pauseAudio();
 };
 
-// Event listener to store the current audio time when navigating between pages
+// Event listener to store the current audio time to continue play off where left off from
 window.onunload = function() {
     localStorage.setItem("audioCurrentTime", audio.currentTime);
 };

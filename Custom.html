@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Custom Puzzle</title>
+    <!-- External CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="Custom">
+
+    <!-- Main Content -->
+    <main class="content" id="content">
+        <!-- Title and puzzle board -->
+        <h1 class="counter">Custom Puzzle</h1>
+        <br>
+        <div id="board"></div>
+        <!-- Turns counter -->
+        <h2 class="counter">Turns: <span id="turns">0</span></h2>
+        <!-- Container for puzzle pieces -->
+        <div class="piecesContainer" id="pieces"></div>
+        <!-- Button to check puzzle -->
+        <button class="CheckPuzzleButton" onclick="checkPuzzle()">Check Puzzle</button>
+    </main>
+
     <!-- Sidebar -->
     <div class="sidenav" id="sidenav">
         <button class="toggleButton" onclick="toggleSidebar()">☰ Open/Close Sidebar</button>
-        <button class="test" onclick="stopAndPlay()">🎵Stop/play Music🎵</button>
-        <a class="main-menu-link" href="main_menu.html">⾕ Return to Main ⾕</a>
-        <a class="main-menu-link" onclick="clearBoard()" >↻ Clear board ⟳</a>
+        <button onclick="stopAndPlay()">🎵Stop/play Music🎵</button>
+        <a class="mainMenuLink" href="main_menu.html">⾕ Return to Main ⾕</a>
+        <a class="clearBoard" onclick="clearBoard()" >↻ Clear board ⟳</a>
         <!-- Form for choosing puzzle size -->
         <form id="sizeForm" onsubmit="return false;">
             <label for="sizeDropdown">📏 Choose Size: 📏</label>
@@ -39,23 +55,9 @@
         <button class="previewButton" onclick="previewCompletedPuzzleCustom()">Preview Completed Puzzle</button>
     </div>
 
-    <!-- Main Content -->
-    <main class="content" id="content">
-        <!-- Title and puzzle board -->
-        <h1 class="counter">Custom Puzzle</h1>
-        <br>
-        <div id="board"></div>
-        <!-- Turns counter -->
-        <h2 class="counter">Turns: <span id="turns">0</span></h2>
-        <!-- Container for puzzle pieces -->
-        <div class="pieces-container" id="pieces"></div>
-        <!-- Button to check puzzle -->
-        <button class="CheckPuzzleButton" onclick="checkPuzzle()">Check Puzzle</button>
-    </main>
-
     <!-- Preview popup -->
     <div id="previewPopup" class="modal">
-        <div class="modal-content">
+        <div class="modalContent">
             <span class="close" onclick="closePreviewPopup()">&times;</span>
             <img id="previewImage" src="" alt="Preview Completed Puzzle">
         </div>
@@ -63,7 +65,7 @@
 
     <!-- Congratulations popup -->
     <div id="congratulationsPopup" class="modal">
-        <div class="modal-content">
+        <div class="modalContent">
             <span class="close" onclick="hideCongratulationsPopup()">&times;</span>
             <h2>👏Congratulations!👏</h2>
             <p>🎉🎈The puzzle is solved correctly.🎈🎉</p>

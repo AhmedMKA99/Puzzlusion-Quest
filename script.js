@@ -206,7 +206,7 @@ function showCongratulationsPopup() {
 }
 
 function congratulationsPopupAllLevels() {
-    document.getElementById('congratulations-Popup-All-Levels').style.display = 'block';
+    document.getElementById('congratulationsPopupAllLevels').style.display = 'block';
 }
 
 
@@ -214,7 +214,7 @@ function congratulationsPopupAllLevels() {
 // Function to hide the congratulations popup
 function hideCongratulationsPopup() {
     document.getElementById('congratulationsPopup').style.display = 'none';
-    document.getElementById('congratulations-Popup-All-Levels').style.display = 'none';
+    document.getElementById('congratulationsPopupAllLevels').style.display = 'none';
 }
 
 // Function to attempt the next level
@@ -232,6 +232,30 @@ function attemptNextLevel() {
         alert('Congratulations! You have completed all available levels.');
     }
 }
+
+// Function to close the popup
+function closeTrophyPopup() {
+    document.getElementById('tropyPopUp').style.display = 'none';
+}
+
+// Function to show the popup
+function showTrophyPopup() {
+    document.getElementById('tropyPopUp').style.display = 'block';
+}
+
+// Function to download the trophy
+function downloadTrophy() {
+    // Replace 'tropy.jpg' with the actual path to your trophy image
+    const trophyURL = 'tropy.jpg';
+    // Create an anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = trophyURL;
+    link.download = 'tropy.jpg'; // Set the filename for download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 
 // Function to return to the menu page
 function returnToMenu() {
@@ -277,8 +301,11 @@ function dragOver(e) {
     e.preventDefault();
 }
 
-
-
+function playPickDropSound(){
+    const audioFile = "pickDrop.mp3";
+    const audio = new Audio(audioFile);
+    audio.play();
+}
 
 // Function to change the puzzle size
 function changePuzzleSize() {

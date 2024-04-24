@@ -27,7 +27,7 @@ body {
     background-size: cover; /* Cover the entire background */
 }
 
-.chose-your-mode-image img {
+.choseYourModeImage img {
     display: block; /* Make sure image is treated as a block element */
     margin: 0 auto; /* Center align horizontally */
 	margin-bottom: 50px;
@@ -35,37 +35,22 @@ body {
 	height: 45%;
 }
 
-.modes {
+.menuModes {
     display: flex;
     justify-content: space-between;
 }
 
-.left-mode, .right-mode {
+.leftMode, .rightMode {
     width: 50%;
     text-align: center;
 }
 
-.main-menu-options:hover {
-    cursor: pointer; /* Change cursor to pointer */
-}
-
-.left-mode {
+.leftMode {
     margin-right: auto; /* Push Levels to the left */
 }
 
-.right-mode {
+.rightMode {
     margin-left: auto; /* Push Custom Puzzle to the right */
-}
-
-.mode button {
-    width: 150px;
-    height: 40px;
-    font-size: 16px;
-}
-
-.mode button:hover {
-    opacity: 0.8; /* Dim the button slightly on hover */
-    transition: opacity 0.3s ease; /* Smooth transition */
 }
 
 /* Custom/Levels Styles */
@@ -100,7 +85,7 @@ body {
     border: 0.5px solid lightblue;
 }
 
-.pieces-container {
+.piecesContainer {
     margin-top: 20px;
 }
 
@@ -141,7 +126,7 @@ body {
     outline: none;
 }
 
-#sizeForm, .main-menu-link { /* Styles for adjustin of puzzle size and main menu links */
+#sizeForm, .mainMenuLink, .clearBoard { /* Styles for adjustin of puzzle size and main menu links */
     margin-top: 20px;
     padding-left: 10px; 
 }
@@ -150,13 +135,13 @@ body {
     width: calc(100% - 20px); /* Adjust width to account for padding */
 }
 
-#level-selection label { /* styles the Radio buttons for level selection */
+#levelselection label { /* styles the Radio buttons for level selection */
     display: block;
     margin-bottom: 10px;
     color: #fff;
 }
 
-#level-selection button { /* styles the Radio buttons submit button for level selection */
+#levelselection button { /* styles the Radio buttons submit button for level selection */
     margin-top: 10px;
 }
 
@@ -172,16 +157,17 @@ body {
     margin-left: 40px;
 }
 
-.minimized .main-menu-link,
+.minimized .mainMenuLink,
+.minimized .clearBoard,
 .minimized #sizeForm,
 .minimized #uploadForm,
-.minimized #Level-text,
-.minimized #level-selection {
+.minimized #LevelText,
+.minimized #levelselection {
     display: none; /* Hide elements when sidebar is minimized */
 }
 
 /* Navigation Links/Button Styles */
-.sidenav a, #sizeForm, #Level-text {
+.sidenav a, #sizeForm, #LevelText {
     padding: 10px 8px 10px 16px;
     text-decoration: none;
     font-size: 18px;
@@ -240,7 +226,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#congratulationsPopup .modal-content {
+#congratulationsPopup .modalContent {
     background-color: #000000af;
     color: #0ca6ff;
     margin: 15% auto; /* Center the popup */
@@ -343,7 +329,7 @@ body {
 }
 
 /* CSS for the preview popup */
-.modal-content {
+.modalContent {
     background-color: rgba(0, 0, 0, 0.686);
     margin: 5% auto; /* 5% from the top and centered */
     padding: 20px;
@@ -356,13 +342,13 @@ body {
 
 }
 
-.modal-content button{
+.modalContent button{
     color:#00d170;
     background-color: #0c114e;
     font-size: large;
 }
 
-.modal-content img {
+.modalContent img {
     max-width: 100%; /* Limit image width to container width */
     height: auto; /* Maintain aspect ratio */
 }
